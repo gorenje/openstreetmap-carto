@@ -12,7 +12,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/openstreetmap-carto
-      - /mnt/backup01/tiles:/openstreetmap-carto/tmp2
+      - /mnt/backup02/tiles:/openstreetmap-carto/tmp2
     depends_on:
       - db
     environment:

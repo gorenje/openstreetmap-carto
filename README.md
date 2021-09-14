@@ -1,97 +1,25 @@
 # OpenStreetMap Carto
 
-![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/preview.png)
+**This version generates a black/white map of Berlin metro area.**
 
-These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](https://www.openstreetmap.org).
+![screenshot](https://raw.github.com/gorenje/openstreetmap-carto/berlin_black_white/preview.png)
 
-The general purpose, the cartographic design goals and guidelines for this style are outlined in [CARTOGRAPHY.md](CARTOGRAPHY.md).
 
-These stylesheets can be used in your own cartography projects, and are designed
-to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik)
- and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
+The following is taken from [Docker installation instructions](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md) and applied to this repo.
 
-Since August 2013 these stylesheets have been used on the OSMF tileservers (tile.openstreetmap.org), and
-are updated from each point release. They supersede the previous [XML-based stylesheets](https://github.com/openstreetmap/mapnik-stylesheets).
+## Quick start
 
-# Installation
+If you are eager to get started here is an overview over the necessary steps.
+Read on below to get the details.
 
-You need a PostGIS database populated with OpenStreetMap data along with auxillary shapefiles.
-See [INSTALL.md](INSTALL.md).
-
-# Contributing
-
-Contributions to this project are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md)
-for full details.
-
-# Versioning
-
-This project follows a MAJOR.MINOR.PATCH versioning system. In the context of a
-cartographic project you can expect the following:
-
-* PATCH: When a patch version is released, there would be no reason not to
-  upgrade. PATCH versions contain only bugfixes e.g. stylesheets won't compile,
-  features are missing by mistake, etc.
-* MINOR: These are routine releases and happen every 2-5 weeks. They will
-  contain changes to what's shown on the map, how they appear, new features
-  added and old features removed. They may rarely contain changes to assets i.e.
-  shapefiles and fonts but will not contain changes that require software or
-  database upgrades.
-* MAJOR: Any change the requires reloading a database, or upgrading software
-  dependecies will trigger a major version change.
-
-# Roadmap
-
-## Initial Release (v1.0.0, December 2012)
-
-This was a full re-implementation of the original OSM style, with only a few bugs discovered later. There's been
-no interest in creating further point releases in the v1.x series.
-
-## Mapnik 2 work (v2.x)
-
-The v2.x series initially focused on refactoring the style, both to to fix
-glitches and to leverage new features in CartoCSS / Mapnik to simplify the
-stylesheets with only small changes to the output, as well as removing 'old-skool'
-tagging methods that are now rarely used. It then started adding new features.
-
-## Mapnik and CartoCSS update (v3.x)
-
-The v3.x series was triggered by an update to the required Mapnik and CartoCSS
-versions.
-
-Care has been taken to not get too clever with variables and expressions. While
-these often make it easier to customise, experience has shown that over-cleverness
-(e.g. [interpolated entities][cleverness]) can discourage contributions.
-
-[issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
-[cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
-
-## Database schema change (v4.x)
-
-The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
-and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need
-to reload their databases, v3.x compatibility is not maintained.
-
-There are over [400 open requests][issues], some that have been open for years.
-These need reviewing and dividing into obvious fixes, or additional new features
-that need some cartographic judgement.
-
-# Alternatives
-
-There are many open-source stylesheets written for creating OpenStreetMap-based
-maps using Mapnik, many based on this project. Some alternatives are:
-
-* [OSM-Bright](https://github.com/mapbox/osm-bright)
-* [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
-* [osmfr-cartocss](https://github.com/cquest/osmfr-cartocss)
-* [openstreetmap-carto-german](https://github.com/giggls/openstreetmap-carto-de)
-
-# Maintainers
-
-* Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
-* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
-* Paul Norman [@pnorman](https://github.com/pnorman/)
-* Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
-* Daniel Koć [@kocio-pl](https://github.com/kocio-pl)
-* Christoph Hormann [@imagico](https://github.com/imagico)
-* Lukas Sommer [@sommerluk](https://github.com/sommerluk)
-* Joseph Eisenberg [@jeisenbe](https://github.com/jeisenbe)
+* `git clone https://github.com/gorenje/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
+* checkout the berlin black & white branch: `cd openstreetmap-carto && git checkout berlin_black_white`
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory. for this step, use the European -> Germany -> Brandenburg with Berlin data from [Geofabrik](https://download.geofabrik.de/) or [direct link download link](https://download.geofabrik.de/europe/germany/brandenburg-latest.osm.pbf)
+* If necessary, `sudo service postgresql stop` to make sure you don't have currently running a native PostgreSQL server which would conflict with Docker's PostgreSQL server.
+* `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
+* `docker-compose up kosmtik` to run the style preview application
+* browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
+* Ctrl+C to stop the style preview application
+* `docker-compose stop db` to stop the database container
+* To dump the tiles, first create a directory to store those tiles (ca. 1.5GB required). Then edit the [docker-compose.yml](https://raw.github.com/gorenje/openstreetmap-carto/berlin_black_white/docker-compose.yml) and change the volume line `- /mnt/backup01/tiles:/openstreetmap-carto/tmp2` to put to your directory (i.e. `/mnt/backup01/tiles` needs changing).
+* Then trigger the tile generating: `docker-compose up generate-tiles`

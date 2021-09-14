@@ -4,7 +4,7 @@
 /*                                                                    */
 /* scripts/generate_road_colours.py > style/road-colors-generated.mss */
 /*                                                                    */
-@motorway-casing: #dc2a67;
+@motorway-casing: #333;
 @trunk-casing: #c84e2f;
 @primary-casing: #eee;
 @secondary-casing: #eee;

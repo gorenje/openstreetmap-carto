@@ -20,7 +20,7 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
-@protected-area: #008000;
+@protected-area: #333;
 @aboriginal: #82643a;
 @religious-icon: #000000;
 
@@ -41,6 +41,7 @@
 @standard-font: @book-fonts;
 
 #amenity-points {
+  [zoom >=25]{
   [feature = 'tourism_alpine_hut'][zoom >= 25],
   [feature = 'tourism_wilderness_hut'][zoom >= 25],
   [feature = 'amenity_shelter'][zoom >= 25] {
@@ -1458,6 +1459,7 @@
       marker-fill: @transportation-icon;
       [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
     }
+  }
   }
 }
 

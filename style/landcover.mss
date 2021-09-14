@@ -1,12 +1,12 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, village_green, garden, allotments
-@scrub: #c8d7ab;        // Lch(84,24,122)
-@forest: #add19e;       // Lch(80,30,135)
-@forest-text: #46673b;  // Lch(40,30,135)
-@park: #c8facc;         // Lch(94,30,145)
-@allotments: #c9e1bf;   // Lch(87,20,135)
-@orchard: #aedfa3; // also vineyard, plant_nursery
+@grass: #333;        // Lch(90,32,128) also grassland, meadow, village_green, garden, allotments
+@scrub: #333;        // Lch(84,24,122)
+@forest: #333;       // Lch(80,30,135)
+@forest-text: #333;  // Lch(40,30,135)
+@park: #333;         // Lch(94,30,145)
+@allotments: #333;   // Lch(87,20,135)
+@orchard: #333; // also vineyard, plant_nursery
 @hedge: @forest;       // Lch(80,30,135)
 
 // --- "Base" landuses ---
@@ -69,7 +69,7 @@
 @golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
-#landcover[zoom >= 10] {
+#landcover[zoom >= 25] {
   ::low-zoom[zoom < 12] { image-filters: scale-hsla(0,1,0,1,0.2,1,0,1); }
   ::high-zoom[zoom >= 12]                 { image-filters: scale-hsla(0,1,0,1,0,  1,   0,1); }
 
@@ -703,7 +703,7 @@
 
 /* man_made=cutline */
 #landcover-line {
-  [zoom >= 14] {
+  [zoom >= 25] {
     line-width: 3;
     line-join: round;
     line-cap: square;
@@ -717,7 +717,7 @@
   }
 }
 
-#landcover-area-symbols {
+#landcover-area-symbols[zoom >= 25] {
 
   ::first {
     [natural = 'mud'],
@@ -738,7 +738,7 @@
     polygon-pattern-file: url('symbols/reef.png');
     polygon-pattern-alignment: global;
   }
-  [zoom >= 13] {
+  [zoom >= 25] {
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
     [int_wetland = 'wet_meadow'] {
@@ -791,7 +791,7 @@
   }
 
   //Also landuse = forest, converted in the SQL
-  [natural = 'wood'][zoom >= 13]::wood {
+  [natural = 'wood'][zoom >= 25]::wood {
     polygon-pattern-file: url('symbols/leaftype_unknown.svg'); // Lch(55,30,135)
     [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/leaftype_broadleaved.svg'); }
     [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/leaftype_needleleaved.svg'); }
@@ -802,7 +802,7 @@
   }
 }
 
-#landuse-overlay {
+#landuse-overlay[zoom >= 25] {
   [landuse = 'military'][zoom >= 8][way_pixels > 900],
   [landuse = 'military'][zoom >= 13],
   [military = 'danger_area'][zoom >= 9] {
@@ -823,36 +823,36 @@
   }
 }
 
-#cliffs {
-  [natural = 'cliff'][zoom >= 13] {
+#cliffs[zoom >= 25] {
+  [natural = 'cliff'][zoom >= 25] {
     line-pattern-file: url('symbols/cliff.svg');
     [zoom >= 15] {
       line-pattern-file: url('symbols/cliff2.svg');
     }
   }
-  [natural = 'ridge'][zoom >= 14] {
+  [natural = 'ridge'][zoom >= 25] {
     line-pattern-file: url('symbols/ridge-mid.svg');
     [zoom >= 15] {
       line-pattern-file: url('symbols/ridge2.svg');
     }
   }
-  [natural = 'arete'][zoom >= 14] {
+  [natural = 'arete'][zoom >= 25] {
     line-pattern-file: url('symbols/arete-mid.svg');
     [zoom >= 15] {
       line-pattern-file: url('symbols/arete2.svg');
     }
   }
-  [man_made = 'embankment'][zoom >= 15]::man_made {
+  [man_made = 'embankment'][zoom >= 25]::man_made {
     line-pattern-file: url('symbols/embankment.svg');
   }
 }
 
-#barriers {
-  [zoom >= 16] {
+#barriers[zoom >= 25] {
+  [zoom >= 25] {
     line-width: 0.4;
     line-color: #444;
   }
-  [feature = 'barrier_hedge'][zoom >= 16] {
+  [feature = 'barrier_hedge'][zoom >= 25] {
     line-width: 1.5;
     line-color: @hedge;
     [zoom >= 17] {
@@ -894,11 +894,11 @@
   }
 }
 
-#tourism-boundary {
+#tourism-boundary[zoom >= 25] {
   [tourism = 'zoo'][zoom >= 10][way_pixels >= 750],
-  [tourism = 'zoo'][zoom >= 17],
-  [tourism = 'theme_park'][zoom >= 10][way_pixels >= 750],
-  [tourism = 'theme_park'][zoom >= 17] {
+  [tourism = 'zoo'][zoom >= 25],
+  [tourism = 'theme_park'][zoom >= 25][way_pixels >= 750],
+  [tourism = 'theme_park'][zoom >= 25] {
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: @tourism;
@@ -923,12 +923,12 @@
   }
 }
 
-#text-line {
+#text-line[zoom >= 25] {
   [feature = 'natural_arete'][zoom >= 15],
   [feature = 'natural_cliff'][zoom >= 15],
   [feature = 'natural_ridge'][zoom >= 15],
   [feature = 'man_made_embankment'][zoom >= 15] {
-    text-name: "[name]";
+    text-name: "";
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-fill: #999;

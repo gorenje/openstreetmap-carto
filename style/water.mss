@@ -43,7 +43,7 @@
       [int_intermittent != 'yes'][zoom >= 14],
       [zoom >= 15] {
         line-width: 2.5;
-        line-color: white;
+        line-color: #111;
         [waterway = 'stream'][zoom >= 15] {
           line-width: 3.5;
         }
@@ -103,7 +103,7 @@
 
     [int_intermittent = 'yes'] {
       [bridge = 'yes'][zoom >= 14] {
-        bridgefill/line-color: white;
+        bridgefill/line-color: #222;
         bridgefill/line-join: round;
         bridgefill/line-width: 4;
         [zoom >= 15] { bridgefill/line-width: 5; }

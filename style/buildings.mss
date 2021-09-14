@@ -11,7 +11,7 @@
 @entrance-normal: @building-line;
 
 #buildings {
-  [zoom >= 14] {
+  [zoom >= 25] {
     polygon-fill: @building-low-zoom;
     polygon-clip: false;
     [zoom >= 15] {
@@ -39,12 +39,12 @@
 
 #bridge {
   [zoom >= 12] {
-    polygon-fill: #B8B8B8;
+    polygon-fill: #bbb;
   }
 }
 
 #entrances {
-  [zoom >= 18]["entrance" != null]  {
+  [zoom >= 25]["entrance" != null]  {
     marker-fill: @entrance-normal;
     marker-allow-overlap: true;
     marker-ignore-placement: true;
@@ -57,7 +57,7 @@
       marker-file: url('symbols/square.svg');
     }
   }
-  [zoom >= 19]["entrance" != null] {
+  [zoom >= 25]["entrance" != null] {
     ["entrance" = "yes"],
     ["entrance" = "main"],
     ["entrance" = "home"],
@@ -79,7 +79,7 @@
       marker-file: url('symbols/rectdiag.svg');
     }
   }
-  [zoom >= 20]["entrance" != null] {
+  [zoom >= 25]["entrance" != null] {
     marker-width: 8.0;
     marker-height: 8.0;
   }

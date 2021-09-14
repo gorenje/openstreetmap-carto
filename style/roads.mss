@@ -11,11 +11,11 @@
 @footway-fill-noaccess: #bbbbbb;
 @steps-fill: @footway-fill;
 @steps-fill-noaccess: #bbbbbb;
-@cycleway-fill: blue;
-@cycleway-fill-noaccess: #9999ff;
+@cycleway-fill: #444;
+@cycleway-fill-noaccess: #555;
 @bridleway-fill: green;
 @bridleway-fill-noaccess: #aaddaa;
-@track-fill: #996600;
+@track-fill: #333;
 @track-fill-noaccess: #e2c5bb;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
@@ -45,7 +45,7 @@
 @minor-construction: #aaa;
 @service-construction: #aaa;
 
-@destination-marking: #c2e0ff;
+@destination-marking: #333;
 @private-marking: #efa9a9;
 @private-marking-for-red: #C26363;
 
@@ -108,8 +108,8 @@
 @primary-link-width-z13:          4;
 @secondary-width-z13:             5;
 @secondary-link-width-z13:        4;
-@tertiary-width-z13:              4;
-@tertiary-link-width-z13:         3;
+@tertiary-width-z13:              0;
+@tertiary-link-width-z13:         0;
 @residential-width-z13:           2.5;
 @living-street-width-z13:         2;
 @bridleway-width-z13:             0.3;
@@ -136,8 +136,8 @@
 @primary-link-width-z15:        7.8;
 @secondary-width-z15:             9;
 @secondary-link-width-z15:        7;
-@tertiary-width-z15:              9;
-@tertiary-link-width-z15:         7;
+@tertiary-width-z15:              0;
+@tertiary-link-width-z15:         0;
 @residential-width-z15:           5;
 @living-street-width-z15:         5;
 @pedestrian-width-z15:            5;
@@ -168,8 +168,8 @@
 @primary-link-width-z17:         12;
 @secondary-width-z17:            18;
 @secondary-link-width-z17:       12;
-@tertiary-width-z17:             18;
-@tertiary-link-width-z17:        12;
+@tertiary-width-z17:             0;
+@tertiary-link-width-z17:        0;
 @residential-width-z17:          12;
 @living-street-width-z17:        12;
 @pedestrian-width-z17:           12;
@@ -185,8 +185,8 @@
 @primary-link-width-z18:         13;
 @secondary-width-z18:            21;
 @secondary-link-width-z18:       13;
-@tertiary-width-z18:             21;
-@tertiary-link-width-z18:        13;
+@tertiary-width-z18:             0;
+@tertiary-link-width-z18:        0;
 @residential-width-z18:          13;
 @living-street-width-z18:        13;
 @pedestrian-width-z18:           13;
@@ -204,8 +204,8 @@
 @primary-link-width-z19:         16;
 @secondary-width-z19:            27;
 @secondary-link-width-z19:       16;
-@tertiary-width-z19:             27;
-@tertiary-link-width-z19:        16;
+@tertiary-width-z19:             0;
+@tertiary-link-width-z19:        0;
 @residential-width-z19:          17;
 @living-street-width-z19:        17;
 @pedestrian-width-z19:           17;
@@ -2944,15 +2944,15 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #guideways {
   [zoom >= 11][zoom < 13] {
     line-width: 0.6;
-    line-color: #6699ff;
+    line-color: #222;
     [zoom >= 12] { line-width: 1; }
   }
   [zoom >= 13] {
     line-width: 3;
-    line-color: #6699ff;
+    line-color: #222;
     line-join: round;
     b/line-width: 1;
-    b/line-color: white;
+    b/line-color: #333;
     b/line-dasharray: 8,12;
     b/line-join: round;
   }
@@ -3405,7 +3405,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #paths-text-name {
   [highway = 'track'],
   [highway = 'construction'][construction = 'track'][zoom >= 25] {
-    [zoom >= 15] {
+    [zoom >= 25] {
       text-name: "";
       text-fill: #222;
       text-size: 8;

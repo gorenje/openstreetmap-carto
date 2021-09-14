@@ -456,7 +456,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [zoom >= 14][admin_level = '8'],
   [zoom >= 15][admin_level = '9'],
   [zoom >= 16] {
-    text-name: "[name]";
+    text-name: "";
     text-face-name: @book-fonts;
     text-fill: @state-labels;
     [admin_level = '6'] { text-fill: @county-labels; }
@@ -473,8 +473,8 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   }
 }
 
-#protected-areas-text[zoom >= 13][way_pixels > 192000] {
-  text-name: "[name]";
+#protected-areas-text[zoom >= 25][way_pixels > 192000] {
+  text-name: "";
   text-face-name: @book-fonts;
   text-fill: @protected-area;
   [boundary='aboriginal_lands'],
@@ -493,7 +493,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-dy: -10;
 }
 
-#protected-areas {
+#protected-areas[zoom >= 25] {
   [way_pixels > 750] {
     [zoom >= 8][zoom < 10] {
       opacity: 0.25;
