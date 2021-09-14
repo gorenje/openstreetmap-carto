@@ -19,11 +19,16 @@ RUN kosmtik plugins --install kosmtik-overpass-layer \
                     --install kosmtik-osm-data-overlay \
                     --install kosmtik-mapnik-reference \
                     --install kosmtik-geojson-overlay \
+                    --install kosmtik-tiles-export \
     && cp /root/.config/kosmtik.yml /tmp/.kosmtik-config.yml
 
 # Closing section
 RUN mkdir -p /openstreetmap-carto
 WORKDIR /openstreetmap-carto
 
+RUN mkdir -p /.config /openstreetmap-carto/.config /openstreetmap-carto/tmp/gentiles && chown -R 1000 /.config /openstreetmap-carto/
+
 USER 1000
+RUN cp /tmp/.kosmtik-config.yml /.config/kosmtik.yml
+
 CMD sh scripts/docker-startup.sh kosmtik

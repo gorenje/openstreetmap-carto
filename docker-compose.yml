@@ -1,7 +1,27 @@
-version: '2'
+version: '2.2'
 services:
+  generate-tiles:
+    image: kosmtik:v1
+    # bounds coordinates are from bottom-left to top-right and in this case
+    # cover berlin metro area.
+    command: kosmtik export project.mml --format tiles --output tmp2 --minZoom 15 --maxZoom 18 --workers 12 --bounds 13.1232,52.3060,13.6917,52.6889 --tileSize 256 --overwrite
+    cpu_count: 12
+    shm_size: 1GB
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/openstreetmap-carto
+      - /mnt/backup01/tiles:/openstreetmap-carto/tmp2
+    depends_on:
+      - db
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
   kosmtik:
     image: kosmtik:v1
+    cpu_count: 12
+    shm_size: 1GB
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,16 +36,20 @@ services:
       - PGUSER=postgres
   db:
     image: db:v1
+    cpu_count: 8
+    shm_size: 1GB
     build:
       context: .
       dockerfile: Dockerfile.db
     ports:
       - "127.0.0.1:5432:5432"
     environment:
-      - PG_WORK_MEM
-      - PG_MAINTENANCE_WORK_MEM
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PG_WORK_MEM=256MB
+      - PG_MAINTENANCE_WORK_MEM=2GB
   import:
     image: import:v1
+    cpu_count: 4
     build:
       context: .
       dockerfile: Dockerfile.import
@@ -38,6 +62,6 @@ services:
       - PGUSER=postgres
       - PG_WORK_MEM
       - PG_MAINTENANCE_WORK_MEM
-      - OSM2PGSQL_CACHE
-      - OSM2PGSQL_NUMPROC
+      - OSM2PGSQL_CACHE=2048
+      - OSM2PGSQL_NUMPROC=4
       - OSM2PGSQL_DATAFILE
