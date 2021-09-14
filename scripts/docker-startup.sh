@@ -63,7 +63,7 @@ kosmtik)
   export KOSMTIK_CONFIGPATH=".kosmtik-config.yml"
 
   # Starting Kosmtik
-  kosmtik serve project.mml --host 0.0.0.0
+  kosmtik serve project.mml --host 0.0.0.0 --workers 12
   # It needs Ctrl+C to be interrupted
   ;;
 
