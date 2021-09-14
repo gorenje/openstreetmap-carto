@@ -4,7 +4,6 @@
 
 ![screenshot](https://raw.github.com/gorenje/openstreetmap-carto/berlin_black_white/preview.png)
 
-
 The following is taken from [Docker installation instructions](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md) and applied to this repo.
 
 ## Quick start
@@ -21,5 +20,13 @@ Read on below to get the details.
 * browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
-* To dump the tiles, first create a directory to store those tiles (ca. 1.5GB required). Then edit the [docker-compose.yml](https://raw.github.com/gorenje/openstreetmap-carto/berlin_black_white/docker-compose.yml) and change the volume line `- /mnt/backup01/tiles:/openstreetmap-carto/tmp2` to put to your directory (i.e. `/mnt/backup01/tiles` needs changing).
+
+## Generating tiles
+
+* To dump the tiles, first create a directory to store those tiles (ca. 1.5GB required). Then edit the [docker-compose.yml](https://github.com/gorenje/openstreetmap-carto/blob/berlin_black_white/docker-compose.yml#L15) and change the volume line `- /mnt/backup02/tiles:/openstreetmap-carto/tmp2` to put to your directory (i.e. `/mnt/backup02/tiles` needs changing).
 * Then trigger the tile generating: `docker-compose up generate-tiles`
+
+
+## Tile usage
+
+These tiles can then be used instead of a OSM link, for example [like this](https://github.com/gorenje/urban-photogrammetry.org/blob/a250f558f384dfd889b0b7ac312d69ade81a626f/f/maphelper.js#L227). For the following [end result](https://urban-photogrammetry.org/berlin/maptour).
