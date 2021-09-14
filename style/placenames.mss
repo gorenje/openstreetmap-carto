@@ -7,7 +7,7 @@
 #country-names {
   [zoom >= 3][zoom < 5][way_pixels > 1000],
   [zoom >= 5][way_pixels < 360000] {
-    text-name: "[name]";
+    text-name: "";
     text-size: 10;
     text-wrap-width: 35; // 3.5 em
     text-line-spacing: -1.5; // -0.15 em
@@ -51,7 +51,7 @@
 #state-names {
   [zoom >= 5][zoom < 7][way_pixels > 3000],
   [zoom >= 7][way_pixels > 3000][way_pixels < 196000] {
-    text-name: "[name]";
+    text-name: "";
     text-size: 10;
     text-wrap-width: 35; // 3.5 em
     text-line-spacing: -1.5; // -0.15 em
@@ -127,7 +127,7 @@
     }
   }
   [zoom >= 8] {
-    text-name: '[name]';
+    text-name: '';
     text-face-name: @book-fonts;
     text-fill: @placenames;
     text-size: 13;
@@ -194,7 +194,7 @@
       }
     }
     [zoom >= 8][score >= 400000] {
-      text-name: '[name]';
+      text-name: '';
       text-face-name: @book-fonts;
       text-fill: @placenames;
       text-size: 13;
@@ -247,7 +247,7 @@
       }
     }
     [zoom >= 8] {
-      text-name: "[name]";
+      text-name: "";
       text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
@@ -287,7 +287,7 @@
 #placenames-medium::low-importance {
   [category = 2] {
     [zoom >= 9][zoom < 16] {
-      text-name: "[name]";
+      text-name: "";
       text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
@@ -320,7 +320,7 @@
 
 #placenames-small::suburb {
   [place = 'suburb'][zoom >= 12][zoom < 17] {
-    text-name: "[name]";
+    text-name: "";
     text-size: 11;
     text-fill: @placenames;
     text-face-name: @book-fonts;
@@ -355,7 +355,7 @@
 #placenames-small::village {
   [place = 'village'] {
     [zoom >= 12][zoom < 17] {
-      text-name: "[name]";
+      text-name: "";
       text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
@@ -397,7 +397,7 @@
 #placenames-small::quarter {
   [place = 'quarter'] {
     [zoom >= 14][zoom < 17] {
-      text-name: "[name]";
+      text-name: "";
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
@@ -426,7 +426,7 @@
   }
   [place = 'hamlet'] {
     [zoom >= 14][zoom < 18] {
-      text-name: "[name]";
+      text-name: "";
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: white;
@@ -461,7 +461,7 @@
   [place = 'neighbourhood'][zoom >= 15][zoom < 20],
   [place = 'isolated_dwelling'][zoom >= 15],
   [place = 'farm'][zoom >= 15] {
-    text-name: "[name]";
+    text-name: "";
     text-size: 10;
     text-fill: @placenames;
     text-face-name: @book-fonts;
@@ -485,7 +485,7 @@
   [zoom >= 8][way_pixels > 12000][way_pixels < 196000] {
     [admin_level = '5'][zoom >= 8],
     [admin_level = '6'][zoom >= 10] {
-      text-name: "[name]";
+      text-name: "";
       text-size: 10;
       text-wrap-width: 30; // 3.0 em
       text-line-spacing: -1.5; // -0.15 em

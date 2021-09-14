@@ -12,11 +12,11 @@
 
 #addresses {
   [zoom >= 17] {
-    text-name: "[addr_housename]";
+    text-name: "";
     ["addr_housenumber" != null] {
-      text-name: [addr_housenumber];
+      text-name: "";
       ["addr_housename" != null] {
-        text-name: [addr_housenumber] + "\n" + [addr_housename];
+        text-name: "";
       }
 
     }
@@ -31,21 +31,21 @@
     [zoom >= 18] {
       text-halo-radius: @standard-halo-radius * 1.25;
       ["addr_unit" != null]["addr_housenumber" = null] {
-        text-name: [addr_unit];
+        text-name: "";
       }
       ["addr_flats" != null]["addr_housenumber" = null] {
-        text-name: [addr_flats];
+        text-name: "";
       }
       ["addr_unit" != null] {
-        text-name: [addr_housenumber] + " " + [addr_unit];
+        text-name: "";
         ["addr_housename" != null] {
-          text-name: [addr_housenumber] + " " + [addr_unit] + "\n" + [addr_housename];
+          text-name: "";
         }
       }
       ["addr_flats" != null] {
-        text-name: [addr_housenumber] + " " + [addr_flats];
+        text-name: "";
         ["addr_housename" != null] {
-          text-name: [addr_housenumber] + " " + [addr_flats] + "\n" + [addr_housename];
+          text-name: "";
         }
       }
     }
@@ -64,7 +64,7 @@ no official postal addresses) */
 #building-text {
   [zoom >= 14][way_pixels > 3000],
   [zoom >= 17] {
-    text-name: "[name]";
+    text-name: "";
     text-face-name: @book-fonts;
     text-fill: #444;
     text-halo-radius: @standard-halo-radius;

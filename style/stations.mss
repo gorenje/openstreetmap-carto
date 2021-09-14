@@ -3,11 +3,11 @@
 
 #stations {
   [railway = 'subway_entrance'][zoom >= 18] {
-    marker-file: url('symbols/entrance.10.svg');
+    marker-file: url('symbols/empty.svg');
     marker-fill: @transportation-icon;
     marker-clip: false;
     [zoom >= 19] {
-      text-name: [ref];
+      text-name: "";
       text-face-name: @book-fonts;
       text-size: 10;
       text-fill: @transportation-icon;
@@ -19,7 +19,7 @@
   }
 
   [railway = 'station'][zoom >= 12] {
-    marker-file: url('symbols/square.svg');
+    marker-file: url('symbols/empty.svg');
     marker-fill: @station-color;
     marker-clip: false;
     [station != 'subway'] {
@@ -30,7 +30,7 @@
       marker-width: 6;
     }
     [zoom >= 14] {
-      text-name: "[name]";
+      text-name: "";
       text-face-name: @bold-fonts;
       text-size: 10;
       text-fill: @station-text;
@@ -51,7 +51,7 @@
 
   [railway = 'halt'] {
     [zoom >= 13] {
-      marker-file: url('symbols/square.svg');
+      marker-file: url('symbols/empty.svg');
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -60,7 +60,7 @@
       }
     }
     [zoom >= 15] {
-      text-name: "[name]";
+      text-name: "";
       text-face-name: @bold-fonts;
       text-size: @standard-font-size;
       text-fill: @station-text;
@@ -74,7 +74,7 @@
 
   [aerialway = 'station']::aerialway {
     [zoom >= 13] {
-      marker-file: url('symbols/square.svg');
+      marker-file: url('symbols/empty.svg');
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -83,7 +83,7 @@
       marker-width: 6;
     }
     [zoom >= 14] {
-      text-name: "[name]";
+      text-name: "";
       text-face-name: @book-fonts;
       text-size: @standard-font-size;
       text-fill: @station-text;
@@ -97,7 +97,7 @@
 
   [railway = 'tram_stop'] {
     [zoom >= 14] {
-      marker-file: url('symbols/square.svg');
+      marker-file: url('symbols/empty.svg');
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -106,7 +106,7 @@
       }
     }
     [zoom >= 16] {
-      text-name: "[name]";
+      text-name: "";
       text-face-name: @book-fonts;
       text-size: @standard-font-size;
       text-fill: @station-text;
